@@ -158,6 +158,20 @@ h3 {
   inset: 0 0 auto 0;
   height: 120vh;
 }
+/* Árboles sueltos (recortes reales, ver public/*-tree-green.png) que
+   viajan pegados a la capa .mtn-trees pero SIN su clip-path -- si
+   fuesen hijos de .mtn-trees, la silueta en U les recortaría la copa
+   cada vez que sobresaliese por encima del terreno. Mismo transform y
+   misma animación que .mtn-trees (ver más abajo), solo que en un
+   layer hermano sin fondo ni recorte. */
+.mtn-trees-deco {
+  pointer-events: none;
+}
+.mtn-trees-deco img {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  width: auto;
+}
 .mtn-mountains {
   /* Perfil real del Circo de Gredos, trazado punto a punto sobre el
      límite montaña/cielo de la foto del propio usuario: de izquierda a
@@ -325,10 +339,12 @@ h3 {
   }
 }
 
-.mtn-trees.is-covering {
+.mtn-trees.is-covering,
+.mtn-trees-deco.is-covering {
   animation: mtn-rise-trees 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
-.mtn-trees.is-revealing {
+.mtn-trees.is-revealing,
+.mtn-trees-deco.is-revealing {
   animation: mtn-fall-trees 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 @keyframes mtn-rise-trees {
