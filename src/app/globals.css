@@ -163,14 +163,22 @@ h3 {
    fuesen hijos de .mtn-trees, la silueta en U les recortaría la copa
    cada vez que sobresaliese por encima del terreno. Mismo transform y
    misma animación que .mtn-trees (ver más abajo), solo que en un
-   layer hermano sin fondo ni recorte. */
+   layer hermano sin fondo ni recorte.
+   Recorte vía mask-image en vez de <img>: el PNG solo aporta la forma
+   (su canal alfa), el color sale de background-color: var(--pine), así
+   que cambia solo al cambiar de tema en vez de quedarse con el verde
+   de modo claro quemado en el píxel. */
 .mtn-trees-deco {
   pointer-events: none;
 }
-.mtn-trees-deco img {
+.mtn-trees-deco .tree-cutout {
   position: absolute;
   transform: translate(-50%, -100%);
-  width: auto;
+  background-color: var(--pine);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 .mtn-mountains {
   /* Perfil real del Circo de Gredos, trazado punto a punto sobre el

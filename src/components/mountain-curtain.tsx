@@ -76,8 +76,28 @@ export function MountainCurtainProvider({ children }: { children: React.ReactNod
             globals.css -- viajan con la misma animación que mtn-trees pero
             sin su clip-path, para no perder la copa por encima del terreno. */}
         <div className={`mtn-curtain mtn-layer mtn-trees-deco ${stateClass}`}>
-          <img src="/first-tree-green.png" alt="" style={{ left: "50%", top: "12%", height: "20vh" }} />
-          <img src="/second-tree-green.png" alt="" style={{ left: "62%", top: "10.23%", height: "20vh" }} />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "50%",
+              top: "12%",
+              height: "20vh",
+              aspectRatio: "125 / 242",
+              WebkitMaskImage: "url(/first-tree-green.png)",
+              maskImage: "url(/first-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "62%",
+              top: "10.23%",
+              height: "20vh",
+              aspectRatio: "103 / 299",
+              WebkitMaskImage: "url(/second-tree-green.png)",
+              maskImage: "url(/second-tree-green.png)",
+            }}
+          />
         </div>
       </div>
     </CurtainContext.Provider>
