@@ -271,7 +271,7 @@ h3 {
    árboles se quedan cerca de la base (52vh) — así que a pantalla
    completa las cuatro ocupan bandas distintas de la pantalla, como en
    las fotos de referencia, en vez de apiñarse todas en una franja fina
-   arriba. Misma duración para las cuatro (2200ms): como recorren
+   arriba. Misma duración para las cuatro (700ms): como recorren
    distancias distintas en el mismo tiempo, las montañas se mueven más
    rápido (95vh de distancia) y los árboles más despacio (solo 48vh) —
    la velocidad distinta sale sola de la distancia, sin tocar la
@@ -279,10 +279,10 @@ h3 {
    de pico de cada capa (20vh) a propósito, para que no quede un hueco
    transparente entre una capa y la siguiente. */
 .mtn-mountains.is-covering {
-  animation: mtn-rise-mountains 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-rise-mountains 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 .mtn-mountains.is-revealing {
-  animation: mtn-fall-mountains 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-fall-mountains 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 @keyframes mtn-rise-mountains {
   from {
@@ -302,10 +302,10 @@ h3 {
 }
 
 .mtn-hills.is-covering {
-  animation: mtn-rise-hills 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-rise-hills 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 .mtn-hills.is-revealing {
-  animation: mtn-fall-hills 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-fall-hills 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 @keyframes mtn-rise-hills {
   from {
@@ -325,10 +325,10 @@ h3 {
 }
 
 .mtn-near.is-covering {
-  animation: mtn-rise-near 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-rise-near 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 .mtn-near.is-revealing {
-  animation: mtn-fall-near 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-fall-near 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 @keyframes mtn-rise-near {
   from {
@@ -349,11 +349,11 @@ h3 {
 
 .mtn-trees.is-covering,
 .mtn-trees-deco.is-covering {
-  animation: mtn-rise-trees 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-rise-trees 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 .mtn-trees.is-revealing,
 .mtn-trees-deco.is-revealing {
-  animation: mtn-fall-trees 2200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: mtn-fall-trees 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 @keyframes mtn-rise-trees {
   from {

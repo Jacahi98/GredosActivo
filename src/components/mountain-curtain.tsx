@@ -18,12 +18,12 @@ type Phase = "idle" | "covering" | "revealing";
 
 const LAYERS = ["mtn-mountains", "mtn-hills", "mtn-near", "mtn-trees"] as const;
 
-// Duración larga a propósito, para poder revisar la silueta con calma —
+// Transición rápida para no entorpecer la navegación entre pantallas —
 // las mismas cifras están en globals.css (mtn-rise/mtn-fall), tienen
 // que coincidir en los dos sitios.
-const RISE_MS = 2200;
-const HOLD_MS = 600;
-const FALL_MS = 2200;
+const RISE_MS = 700;
+const HOLD_MS = 150;
+const FALL_MS = 700;
 
 const CurtainContext = createContext<((href: string) => void) | null>(null);
 
