@@ -98,6 +98,127 @@ export function MountainCurtainProvider({ children }: { children: React.ReactNod
               maskImage: "url(/second-tree-green.png)",
             }}
           />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "38%",
+              top: "11.48%",
+              height: "20vh",
+              aspectRatio: "75 / 391",
+              WebkitMaskImage: "url(/third-tree-green.png)",
+              maskImage: "url(/third-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "8%",
+              top: "11.59%",
+              height: "20vh",
+              aspectRatio: "179 / 217",
+              WebkitMaskImage: "url(/fourth-tree-green.png)",
+              maskImage: "url(/fourth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "46%",
+              top: "11.51%",
+              height: "20vh",
+              aspectRatio: "124 / 195",
+              WebkitMaskImage: "url(/fifth-tree-green.png)",
+              maskImage: "url(/fifth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "58%",
+              top: "12.31%",
+              height: "20vh",
+              aspectRatio: "130 / 247",
+              WebkitMaskImage: "url(/sixth-tree-green.png)",
+              maskImage: "url(/sixth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "94%",
+              top: "13.37%",
+              height: "20vh",
+              aspectRatio: "118 / 434",
+              WebkitMaskImage: "url(/seventh-tree-green.png)",
+              maskImage: "url(/seventh-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "15%",
+              top: "11.79%",
+              height: "20vh",
+              aspectRatio: "179 / 394",
+              WebkitMaskImage: "url(/eighth-tree-green.png)",
+              maskImage: "url(/eighth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "23%",
+              top: "9.08%",
+              height: "20vh",
+              aspectRatio: "113 / 267",
+              WebkitMaskImage: "url(/ninth-tree-green.png)",
+              maskImage: "url(/ninth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "30%",
+              top: "8.02%",
+              height: "20vh",
+              aspectRatio: "115 / 310",
+              WebkitMaskImage: "url(/tenth-tree-green.png)",
+              maskImage: "url(/tenth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "70%",
+              top: "8.14%",
+              height: "20vh",
+              aspectRatio: "91 / 362",
+              WebkitMaskImage: "url(/eleventh-tree-green.png)",
+              maskImage: "url(/eleventh-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "78%",
+              top: "10.47%",
+              height: "20vh",
+              aspectRatio: "113 / 471",
+              WebkitMaskImage: "url(/twelfth-tree-green.png)",
+              maskImage: "url(/twelfth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "86%",
+              top: "10.75%",
+              height: "20vh",
+              aspectRatio: "118 / 357",
+              WebkitMaskImage: "url(/thirteenth-tree-green.png)",
+              maskImage: "url(/thirteenth-tree-green.png)",
+            }}
+          />
         </div>
       </div>
     </CurtainContext.Provider>
