@@ -48,6 +48,12 @@ export function MountainCurtainProvider({ children }: { children: React.ReactNod
 
       setTimeout(() => {
         router.push(href);
+        // Next.js restaura el scroll de forma asíncrona tras el push, y con
+        // la cortina tardando solo unos cientos de ms en revelar, a veces
+        // no le da tiempo -- se ve la página nueva a medio scroll antes de
+        // saltar arriba. Forzarlo aquí garantiza que ya está arriba del
+        // todo para cuando se revela.
+        window.scrollTo(0, 0);
 
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
