@@ -219,6 +219,171 @@ export function MountainCurtainProvider({ children }: { children: React.ReactNod
               maskImage: "url(/thirteenth-tree-green.png)",
             }}
           />
+          {/* Repoblación: copias de los árboles de tipo pino (tronco largo,
+              copa suelta -- 3, 7, 8, 9, 10, 11, 12) repartidas entre las
+              posiciones ya ocupadas, con altura y espejo variables para que
+              no se lean como el mismo recorte pegado varias veces. */}
+          <div
+            className="tree-cutout"
+            style={{
+              left: "3%",
+              top: "12.56%",
+              height: "19vh",
+              aspectRatio: "118 / 434",
+              WebkitMaskImage: "url(/seventh-tree-green.png)",
+              maskImage: "url(/seventh-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "11.5%",
+              top: "11.6%",
+              height: "18vh",
+              aspectRatio: "179 / 394",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/eighth-tree-green.png)",
+              maskImage: "url(/eighth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "19%",
+              top: "11.02%",
+              height: "20vh",
+              aspectRatio: "113 / 267",
+              WebkitMaskImage: "url(/ninth-tree-green.png)",
+              maskImage: "url(/ninth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "26.5%",
+              top: "7.78%",
+              height: "21vh",
+              aspectRatio: "115 / 310",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/tenth-tree-green.png)",
+              maskImage: "url(/tenth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "34%",
+              top: "9.84%",
+              height: "19vh",
+              aspectRatio: "75 / 391",
+              WebkitMaskImage: "url(/third-tree-green.png)",
+              maskImage: "url(/third-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "42%",
+              top: "11.75%",
+              height: "20vh",
+              aspectRatio: "91 / 362",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/eleventh-tree-green.png)",
+              maskImage: "url(/eleventh-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "48%",
+              top: "11.64%",
+              height: "22vh",
+              aspectRatio: "113 / 471",
+              WebkitMaskImage: "url(/twelfth-tree-green.png)",
+              maskImage: "url(/twelfth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "54%",
+              top: "12.79%",
+              height: "17vh",
+              aspectRatio: "118 / 434",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/seventh-tree-green.png)",
+              maskImage: "url(/seventh-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "60%",
+              top: "11.39%",
+              height: "20vh",
+              aspectRatio: "179 / 394",
+              WebkitMaskImage: "url(/eighth-tree-green.png)",
+              maskImage: "url(/eighth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "66%",
+              top: "8.27%",
+              height: "19vh",
+              aspectRatio: "113 / 267",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/ninth-tree-green.png)",
+              maskImage: "url(/ninth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "74%",
+              top: "9.46%",
+              height: "18vh",
+              aspectRatio: "115 / 310",
+              WebkitMaskImage: "url(/tenth-tree-green.png)",
+              maskImage: "url(/tenth-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "82%",
+              top: "10.54%",
+              height: "21vh",
+              aspectRatio: "75 / 391",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/third-tree-green.png)",
+              maskImage: "url(/third-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "90%",
+              top: "12.03%",
+              height: "19vh",
+              aspectRatio: "91 / 362",
+              WebkitMaskImage: "url(/eleventh-tree-green.png)",
+              maskImage: "url(/eleventh-tree-green.png)",
+            }}
+          />
+          <div
+            className="tree-cutout"
+            style={{
+              left: "98%",
+              top: "13.04%",
+              height: "18vh",
+              aspectRatio: "113 / 471",
+              transform: "translate(-50%, -100%) scaleX(-1)",
+              WebkitMaskImage: "url(/twelfth-tree-green.png)",
+              maskImage: "url(/twelfth-tree-green.png)",
+            }}
+          />
         </div>
       </div>
     </CurtainContext.Provider>
