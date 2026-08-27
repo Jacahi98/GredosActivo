@@ -19,7 +19,7 @@ const ACTIVITIES = [
   {
     slug: "parque-de-cuerda",
     name: "Parque de Cuerda",
-    src: "/photos/parque-cuerda.jpg",
+    src: "/parque-arboles/IMG_1781.jpg",
     description:
       "Circuitos de tirolinas, puentes y pasarelas entre árboles, con distintos niveles de dificultad y equipo de seguridad homologado.",
   },
