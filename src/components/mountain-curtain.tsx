@@ -74,7 +74,16 @@ export function MountainCurtainProvider({ children }: { children: React.ReactNod
   return (
     <CurtainContext.Provider value={navigate}>
       {children}
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-30" aria-hidden="true">
+      {/* Fondo de "cielo" detrás de las cuatro capas -- sin esto, los huecos
+          entre los picos afilados de mtn-mountains son transparentes y se ve
+          el patrón de fondo de la página por detrás en vez de un hueco de
+          cielo limpio. */}
+      <div
+        className={`pointer-events-none fixed inset-x-0 top-0 z-30 h-screen ${
+          stateClass ? "bg-[var(--granite)]" : ""
+        }`}
+        aria-hidden="true"
+      >
         {LAYERS.map((layer) => (
           <div key={layer} className={`mtn-curtain mtn-layer ${layer} ${stateClass}`} />
         ))}
