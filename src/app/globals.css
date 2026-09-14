@@ -180,6 +180,89 @@ h3 {
   -webkit-mask-size: contain;
   mask-size: contain;
 }
+
+/* Densidad de la arboleda segun el ancho (ver src/data/curtain-trees.ts).
+   El tronco mide ~90px siempre (su tamano va en vh), asi que la densidad la
+   marca el hueco EN PIXELES entre troncos, no el porcentaje. Los 66 arboles a
+   2560px dan ~39px de hueco (solape x2,3); el reparto mantiene ese solape
+   entre 2,25 y 2,41 en todos los anchos ocultando arboles, en vez de dejar
+   que se compriman.
+   Se hace con media queries y no en JavaScript a proposito: asi el subconjunto
+   correcto ya viene en el HTML del servidor, sin parpadeo al hidratar.
+   Ojo con la especificidad: la regla que oculta y las que muestran pesan LO
+   MISMO (dos clases y un atributo). Un intento anterior uso
+   [data-min-w]:not([data-min-w="0"]) para ocultar, que pesa uno mas, y ganaba
+   siempre: quedaban 14 arboles incluso a 2554px de ancho. */
+.mtn-trees-deco .tree-cutout[data-min-w="448"],
+.mtn-trees-deco .tree-cutout[data-min-w="544"],
+.mtn-trees-deco .tree-cutout[data-min-w="640"],
+.mtn-trees-deco .tree-cutout[data-min-w="736"],
+.mtn-trees-deco .tree-cutout[data-min-w="832"],
+.mtn-trees-deco .tree-cutout[data-min-w="928"],
+.mtn-trees-deco .tree-cutout[data-min-w="1024"],
+.mtn-trees-deco .tree-cutout[data-min-w="1152"],
+.mtn-trees-deco .tree-cutout[data-min-w="1280"],
+.mtn-trees-deco .tree-cutout[data-min-w="1408"],
+.mtn-trees-deco .tree-cutout[data-min-w="1536"],
+.mtn-trees-deco .tree-cutout[data-min-w="1664"],
+.mtn-trees-deco .tree-cutout[data-min-w="1792"],
+.mtn-trees-deco .tree-cutout[data-min-w="1920"],
+.mtn-trees-deco .tree-cutout[data-min-w="2112"],
+.mtn-trees-deco .tree-cutout[data-min-w="2304"],
+.mtn-trees-deco .tree-cutout[data-min-w="2560"] {
+  display: none;
+}
+@media (min-width: 448px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="448"] { display: block; }
+}
+@media (min-width: 544px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="544"] { display: block; }
+}
+@media (min-width: 640px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="640"] { display: block; }
+}
+@media (min-width: 736px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="736"] { display: block; }
+}
+@media (min-width: 832px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="832"] { display: block; }
+}
+@media (min-width: 928px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="928"] { display: block; }
+}
+@media (min-width: 1024px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1024"] { display: block; }
+}
+@media (min-width: 1152px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1152"] { display: block; }
+}
+@media (min-width: 1280px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1280"] { display: block; }
+}
+@media (min-width: 1408px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1408"] { display: block; }
+}
+@media (min-width: 1536px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1536"] { display: block; }
+}
+@media (min-width: 1664px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1664"] { display: block; }
+}
+@media (min-width: 1792px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1792"] { display: block; }
+}
+@media (min-width: 1920px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="1920"] { display: block; }
+}
+@media (min-width: 2112px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="2112"] { display: block; }
+}
+@media (min-width: 2304px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="2304"] { display: block; }
+}
+@media (min-width: 2560px) {
+  .mtn-trees-deco .tree-cutout[data-min-w="2560"] { display: block; }
+}
 .mtn-mountains {
   /* Perfil real del Circo de Gredos, trazado punto a punto sobre el
      límite montaña/cielo de la foto del propio usuario: de izquierda a

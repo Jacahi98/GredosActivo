@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from "react";
 import Image from "next/image";
+import { SilentVideo } from "@/components/silent-video";
 
 export type MediaItem =
   | { type: "image"; src: string; label: string }
@@ -104,19 +105,10 @@ export function MediaLightbox({
             />
           </div>
         ) : (
-          // eslint-disable-next-line jsx-a11y/media-has-caption
-          <video
-            key={item.src}
-            src={item.src}
-            poster={item.poster}
-            controls
-            autoPlay
-            playsInline
-            className="max-h-[85vh] max-w-[90vw] rounded-sm"
-          />
+          <SilentVideo src={item.src} poster={item.poster} label={item.label} />
         )}
         <p className="absolute -bottom-9 left-0 right-0 text-center font-mono text-xs uppercase tracking-wider text-white/70">
-          {item.label} · {index + 1}/{items.length}
+          {index + 1}/{items.length}
         </p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { PageTransition } from "@/components/page-transition";
+import { PHONE_TEL, PHONE_DISPLAY } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Actividades — Gredos Activo",
@@ -51,7 +52,26 @@ export default function ActividadesPage() {
           Para grupos o en solitario, con material y monitores cualificados, en plena Sierra de Gredos.
         </p>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {/* Una sola llamada a la acción para las cuatro actividades, y arriba:
+            se reserva igual para todas, así que repetirla en cada tarjeta solo
+            añadía ruido, y dejarla al final obligaba a recorrer la página
+            entera para encontrar el teléfono. */}
+        <div className="mt-10 flex flex-col items-start gap-4 rounded-sm border border-[var(--border)] bg-[var(--granite-raised)] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div>
+            <h2 className="text-xl text-[var(--ink)]">¿Te animas?</h2>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--text-dim)]">
+              Cuéntanos qué actividad os interesa y cuántos sois, y lo organizamos.
+            </p>
+          </div>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="shrink-0 rounded-sm bg-[var(--pine)] px-5 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--pine-ink)] transition-opacity hover:opacity-90"
+          >
+            Llamar para reservar · {PHONE_DISPLAY}
+          </a>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
           {ACTIVITIES.map((activity, i) => (
             <article
               key={activity.slug}
@@ -70,16 +90,11 @@ export default function ActividadesPage() {
               <div className="p-6">
                 <h2 className="text-xl text-[var(--ink)]">{activity.name}</h2>
                 <p className="mt-2.5 text-sm leading-relaxed text-[var(--text-dim)]">{activity.description}</p>
-                <a
-                  href="tel:920348045"
-                  className="mt-4 inline-block text-sm font-semibold text-[var(--pine)] underline-offset-4 transition-colors hover:text-[var(--gorse)] hover:underline"
-                >
-                  Llamar para reservar · 920 34 80 45
-                </a>
               </div>
             </article>
           ))}
         </div>
+
       </section>
     </PageTransition>
   );

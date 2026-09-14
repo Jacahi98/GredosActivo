@@ -35,9 +35,6 @@ export function MediaGrid({ items }: { items: MediaItem[] }) {
                 </div>
               </div>
             )}
-            <p className="pointer-events-none absolute bottom-2 left-2 right-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-white opacity-0 transition-opacity group-hover:opacity-100 sm:text-[11px]">
-              {item.label}
-            </p>
           </button>
         ))}
       </div>

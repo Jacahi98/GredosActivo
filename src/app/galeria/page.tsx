@@ -53,9 +53,6 @@ export default function GaleriaPage() {
 
         <div className="mt-14">
           <h2 className="text-xl text-[var(--ink)]">Parque de Cuerda</h2>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-[var(--text-dim)]">
-            Tirolinas, puentes y pasarelas entre los pinos, tal cual se viven en el circuito.
-          </p>
           <MediaGrid items={PARQUE_ARBOLES} />
         </div>
 

@@ -6,6 +6,7 @@ import { PageLoader } from "@/components/page-loader";
 import { MountainCurtainProvider } from "@/components/mountain-curtain";
 import { DockNav } from "@/components/dock-nav";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const yesevaOne = Yeseva_One({
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <PageLoader>
               <Header />
               {children}
+              <Footer />
             </PageLoader>
           </MotionProvider>
           <DockNav />

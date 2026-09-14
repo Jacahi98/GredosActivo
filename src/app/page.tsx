@@ -3,6 +3,7 @@ import { Fuel } from "lucide-react";
 import { PageTransition } from "@/components/page-transition";
 import { GoogleReviewsBadge } from "@/components/google-reviews-badge";
 import { CurtainLink } from "@/components/curtain-link";
+import { GanaderiaSection } from "@/components/ganaderia-section";
 import { PHONE_TEL, PHONE_DISPLAY, MAPS_REVIEWS_URL, GOOGLE_RATING, GOOGLE_REVIEW_COUNT } from "@/lib/business";
 
 export default function Home() {
@@ -90,6 +91,8 @@ export default function Home() {
           </CurtainLink>
         </div>
       </section>
+
+      <GanaderiaSection />
     </PageTransition>
   );
 }
