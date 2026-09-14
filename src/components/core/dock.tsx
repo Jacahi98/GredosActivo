@@ -23,9 +23,14 @@ import { cn } from "@/lib/utils";
 const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 80;
 const DEFAULT_PANEL_HEIGHT = 64;
-// Lado del icono en reposo. En movil se recorta a 36 px con max-w-9 desde
+// Lado del icono en reposo. En movil se recorta con max-w-* desde
 // dock-nav.tsx para que los seis quepan en 320 px de ancho.
 const BASE_WIDTH = 40;
+// El icono de la pagina en la que estas va siempre mas grande, tambien en
+// tactil: es lo unico que dice "estas aqui" junto al color y el punto. Se
+// queda por debajo de la altura util de la pildora (54 px) para no asomar
+// por arriba como hace la magnificacion al pasar el raton.
+const ACTIVE_WIDTH = 52;
 
 export type DockProps = {
   children: React.ReactNode;
@@ -39,6 +44,8 @@ export type DockItemProps = {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  /** El de la pagina actual: se queda ampliado de forma permanente. */
+  active?: boolean;
 };
 
 export type DockLabelProps = {
@@ -128,7 +135,13 @@ function Dock({
         onMouseEnter={hoverCapable ? () => isHovered.set(1) : undefined}
         onMouseLeave={hoverCapable ? () => isHovered.set(0) : undefined}
         className={cn(
-          "mx-auto flex w-fit gap-2 rounded-2xl px-3 sm:gap-4 sm:px-4",
+          // items-center, no el stretch por defecto: los DockItem llevan
+          // aspect-square y los motores no se ponen de acuerdo en si eso gana
+          // al estirado. Chrome los estiraba a los 54 px de la fila y los
+          // centraba de rebote; Safari respetaba la proporcion, dejaba la caja
+          // en 36x36 y la pegaba arriba, con el hueco debajo. Centrando a mano
+          // los dos hacen lo mismo.
+          "mx-auto flex w-fit items-center gap-1.5 rounded-2xl px-3 sm:gap-4 sm:px-4",
           className
         )}
         style={{ height: panelHeight }}
@@ -143,10 +156,12 @@ function Dock({
   );
 }
 
-function DockItem({ children, className, onClick }: DockItemProps) {
+function DockItem({ children, className, onClick, active = false }: DockItemProps) {
   const { magnification, spring, hoverCapable } = useDock();
 
   const isHovered = useMotionValue(0);
+
+  const reposo = active ? ACTIVE_WIDTH : BASE_WIDTH;
 
   // Solo se amplia el icono senalado. Antes la anchura salia de la distancia
   // al puntero, asi que los dos o tres de al lado crecian tambien; en una fila
@@ -155,7 +170,7 @@ function DockItem({ children, className, onClick }: DockItemProps) {
   const widthTransform = useTransform(
     isHovered,
     [0, 1],
-    [BASE_WIDTH, hoverCapable ? magnification : BASE_WIDTH]
+    [reposo, hoverCapable ? magnification : reposo]
   );
 
   const width = useSpring(widthTransform, spring);

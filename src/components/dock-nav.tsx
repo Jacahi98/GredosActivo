@@ -39,7 +39,14 @@ export function DockNav() {
           const Icon = item.icon;
           const active = pathname === item.href;
           return (
-            <DockItem key={item.href} className="aspect-square max-w-9 sm:max-w-none">
+            <DockItem
+              key={item.href}
+              active={active}
+              // El tope en movil va por elemento: el activo necesita mas que
+              // los demas. Con 5 a 36 px, uno a 48 y gap-1.5 la barra mide
+              // 282 px, que entran en los 288 utiles de una pantalla de 320.
+              className={`aspect-square ${active ? "max-w-12" : "max-w-9"} sm:max-w-none`}
+            >
               <DockLabel className="border-white/20 bg-black/70 text-white backdrop-blur-sm">
                 {item.title}
               </DockLabel>
