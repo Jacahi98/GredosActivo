@@ -16,20 +16,20 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import { cn } from "@/lib/utils";
 
 const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 80;
-const DEFAULT_DISTANCE = 150;
 const DEFAULT_PANEL_HEIGHT = 64;
+// Lado del icono en reposo. En movil se recorta a 36 px con max-w-9 desde
+// dock-nav.tsx para que los seis quepan en 320 px de ancho.
+const BASE_WIDTH = 40;
 
 export type DockProps = {
   children: React.ReactNode;
   className?: string;
-  distance?: number;
   panelHeight?: number;
   magnification?: number;
   spring?: SpringOptions;
@@ -52,10 +52,9 @@ export type DockIconProps = {
 };
 
 export type DocContextType = {
-  mouseX: MotionValue;
   spring: SpringOptions;
   magnification: number;
-  distance: number;
+  hoverCapable: boolean;
 };
 
 export type DockProviderProps = {
@@ -67,6 +66,29 @@ const DockContext = createContext<DocContextType | undefined>(undefined);
 
 function DockProvider({ children, value }: DockProviderProps) {
   return <DockContext.Provider value={value}>{children}</DockContext.Provider>;
+}
+
+// Un dedo no tiene hover. iOS dispara mousemove y pointerenter sinteticos al
+// tocar, pero nunca el mouseleave correspondiente, asi que el icono que
+// pulsabas para navegar se quedaba ampliado y con su etiqueta abierta al
+// llegar a la pagina nueva. La magnificacion solo existe donde hay un puntero
+// de verdad; en tactil el dock se queda quieto.
+//
+// Arranca en false para que el HTML del servidor sea el estado en reposo, que
+// es el mismo que se ve hasta que alguien pasa el raton: no hay salto al
+// hidratar.
+function useHoverCapable() {
+  const [capable, setCapable] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setCapable(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  return capable;
 }
 
 function useDock() {
@@ -82,10 +104,9 @@ function Dock({
   className,
   spring = { mass: 0.1, stiffness: 150, damping: 12 },
   magnification = DEFAULT_MAGNIFICATION,
-  distance = DEFAULT_DISTANCE,
   panelHeight = DEFAULT_PANEL_HEIGHT,
 }: DockProps) {
-  const mouseX = useMotionValue(Infinity);
+  const hoverCapable = useHoverCapable();
   const isHovered = useMotionValue(0);
 
   const maxHeight = useMemo(() => {
@@ -104,14 +125,8 @@ function Dock({
       className="mx-2 flex max-w-full items-end overflow-visible"
     >
       <motion.div
-        onMouseMove={({ pageX }) => {
-          isHovered.set(1);
-          mouseX.set(pageX);
-        }}
-        onMouseLeave={() => {
-          isHovered.set(0);
-          mouseX.set(Infinity);
-        }}
+        onMouseEnter={hoverCapable ? () => isHovered.set(1) : undefined}
+        onMouseLeave={hoverCapable ? () => isHovered.set(0) : undefined}
         className={cn(
           "mx-auto flex w-fit gap-2 rounded-2xl px-3 sm:gap-4 sm:px-4",
           className
@@ -120,7 +135,7 @@ function Dock({
         role="toolbar"
         aria-label="Application dock"
       >
-        <DockProvider value={{ mouseX, spring, distance, magnification }}>
+        <DockProvider value={{ spring, magnification, hoverCapable }}>
           {children}
         </DockProvider>
       </motion.div>
@@ -129,33 +144,29 @@ function Dock({
 }
 
 function DockItem({ children, className, onClick }: DockItemProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { distance, magnification, mouseX, spring } = useDock();
+  const { magnification, spring, hoverCapable } = useDock();
 
   const isHovered = useMotionValue(0);
 
-  const mouseDistance = useTransform(mouseX, (val) => {
-    const domRect = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - domRect.x - domRect.width / 2;
-  });
-
+  // Solo se amplia el icono senalado. Antes la anchura salia de la distancia
+  // al puntero, asi que los dos o tres de al lado crecian tambien; en una fila
+  // de seis eso desplaza a todos los demas y se lee como si el dock se hubiera
+  // descentrado, en vez de como un elemento destacandose.
   const widthTransform = useTransform(
-    mouseDistance,
-    [-distance, 0, distance],
-    [40, magnification, 40]
+    isHovered,
+    [0, 1],
+    [BASE_WIDTH, hoverCapable ? magnification : BASE_WIDTH]
   );
 
   const width = useSpring(widthTransform, spring);
 
   return (
     <motion.div
-      ref={ref}
       style={{ width }}
-      onHoverStart={() => isHovered.set(1)}
-      onHoverEnd={() => isHovered.set(0)}
-      onFocus={() => isHovered.set(1)}
-      onBlur={() => isHovered.set(0)}
+      onHoverStart={hoverCapable ? () => isHovered.set(1) : undefined}
+      onHoverEnd={hoverCapable ? () => isHovered.set(0) : undefined}
+      onFocus={hoverCapable ? () => isHovered.set(1) : undefined}
+      onBlur={hoverCapable ? () => isHovered.set(0) : undefined}
       className={cn(
         "relative inline-flex items-center justify-center",
         className

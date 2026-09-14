@@ -16,7 +16,8 @@ const NAV = [
 // Dock estilo macOS: panel de cristal líquido (fondo translúcido + blur y
 // saturación altos, borde de luz muy tenue) en vez de una bandeja opaca —
 // el mismo lenguaje visual que el "liquid glass" de Apple, no un bloque de
-// color sólido. Los iconos se magnifican al pasar el ratón cerca. El tema
+// color sólido. Al señalar un icono con el ratón se amplía él solo, no sus
+// vecinos, y en pantallas táctiles no se amplía ninguno. El tema
 // claro/oscuro no es un apartado, así que vive en el header, no aquí. Ver
 // src/components/core/dock.tsx para el mecanismo de magnificación
 // (adaptado de Motion Primitives a framer-motion).
@@ -32,7 +33,6 @@ export function DockNav() {
       <Dock
         className="border border-white/25 bg-[var(--granite-raised)]/85 shadow-xl shadow-black/25 [backdrop-filter:blur(32px)_saturate(160%)]"
         magnification={64}
-        distance={110}
         panelHeight={56}
       >
         {NAV.map((item) => {
