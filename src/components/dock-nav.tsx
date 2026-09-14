@@ -28,7 +28,7 @@ export function DockNav() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+    <div className="fixed inset-x-0 bottom-4 z-40 flex justify-center px-2 sm:px-4">
       <Dock
         className="border border-white/25 bg-[var(--granite-raised)]/85 shadow-xl shadow-black/25 [backdrop-filter:blur(32px)_saturate(160%)]"
         magnification={64}
@@ -39,7 +39,7 @@ export function DockNav() {
           const Icon = item.icon;
           const active = pathname === item.href;
           return (
-            <DockItem key={item.href} className="aspect-square">
+            <DockItem key={item.href} className="aspect-square max-w-9 sm:max-w-none">
               <DockLabel className="border-white/20 bg-black/70 text-white backdrop-blur-sm">
                 {item.title}
               </DockLabel>
@@ -64,7 +64,7 @@ export function DockNav() {
           );
         })}
 
-        <DockItem className="aspect-square">
+        <DockItem className="aspect-square max-w-9 sm:max-w-none">
           <DockLabel className="border-white/20 bg-black/70 text-white backdrop-blur-sm">
             Llamar · 920 34 80 45
           </DockLabel>

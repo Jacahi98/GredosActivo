@@ -6,14 +6,21 @@ import { PHONE_TEL, PHONE_DISPLAY } from "@/lib/business";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 flex items-center justify-between border-b border-[var(--border)] bg-[var(--granite)]/90 px-4 py-3 backdrop-blur sm:px-8">
-      <CurtainLink href="/" className="flex shrink-0 items-center gap-3">
+    <header className="sticky top-0 z-40 flex items-center justify-between gap-2 border-b border-[var(--border)] bg-[var(--granite)]/90 px-4 py-3 backdrop-blur sm:gap-3 sm:px-8">
+      {/* min-w-0 en el enlace y en la columna de texto: sin el, un hijo flex
+          nunca baja de su ancho de contenido y el nombre largo empujaba la
+          cabecera 136 px mas alla del viewport, dando scroll horizontal en
+          movil. Con min-w-0 + truncate el texto cede y nunca desborda. */}
+      <CurtainLink href="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
         <HeaderLogo />
-        <span className="flex flex-col gap-0.5">
-          <span className="font-[family-name:var(--font-display)] text-lg font-medium leading-none text-[var(--ink)]">
+        <span className="flex min-w-0 flex-col gap-0.5">
+          <span className="truncate font-[family-name:var(--font-display)] text-base font-medium leading-none text-[var(--ink)] sm:text-lg">
             Gredos Activo
           </span>
-          <span className="font-mono text-[10px] font-semibold uppercase leading-none tracking-[0.16em] text-[var(--sky)]">
+          {/* El subtitulo completo no cabe en un movil (mide ~310 px), y cortarlo
+              con puntos suspensivos queda peor que no ponerlo: la localidad ya
+              esta en el heroe y en el pie. */}
+          <span className="hidden truncate font-mono text-[10px] font-semibold uppercase leading-none tracking-[0.16em] text-[var(--sky)] sm:block">
             Navarredonda de Gredos · Sierra de Gredos
           </span>
         </span>
