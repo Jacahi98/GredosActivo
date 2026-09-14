@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# fuente de los arboles de la cortina de montana: SVG de 880 KB del que se
+# recortaron los PNG de public/. Ya no hace falta para construir (los recortes
+# estan versionados) y vive en public/, asi que si se trackeara se serviria
+# publicamente sin motivo.
+/public/source-assets/pinetrees.svg
